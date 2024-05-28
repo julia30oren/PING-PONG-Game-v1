@@ -52,7 +52,6 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
 
 int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 {
-    // Create Window Class ----------------------------------------------------------------------- 1 
     const wchar_t CLASS_NAME[] = L"Game Window Class"; // Register the window class.
     
     WNDCLASS window_class = {};
@@ -60,10 +59,8 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
     window_class.lpszClassName = CLASS_NAME;
     window_class.lpfnWndProc = window_callback;
 
-    // Register Class ----------------------------------------------------------------------------- 2
     RegisterClass(&window_class);
 
-    // Create Window ------------------------------------------------------------------------------ 3
     HWND window = CreateWindowEx(
         0,                                          // Optional window styles.
         window_class.lpszClassName,                 // Window class
@@ -81,7 +78,6 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 
     HDC hdc = GetDC(window);
 
-    // --------------------------------------------------------------------------------------------- 4
     if (window == NULL)
     {
         return 0;
