@@ -78,11 +78,6 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 
     HDC hdc = GetDC(window);
 
-    if (window == NULL)
-    {
-        return 0;
-    }
-
     Input input = {};
 
     float delta_time = 0.016666f;
@@ -115,8 +110,8 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 
                 #define process_button(b,vk)\
                 case vk:{\
+                    input.buttons[b].changed = is_down != input.buttons[b].is_down;\
                     input.buttons[b].is_down = is_down;\
-                    input.buttons[b].changed = true;\
                     } break;
 
                     switch (vk_code)
@@ -128,8 +123,11 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 
                         process_button(BUTTON_UP, VK_UP);
                         process_button(BUTTON_DOWN, VK_DOWN);
+                        process_button(BUTTON_W, 'W');
+                        process_button(BUTTON_S, 'S');
                         process_button(BUTTON_LEFT, VK_LEFT);
                         process_button(BUTTON_RIGHT, VK_RIGHT);
+                        process_button(BUTTON_ENTER, VK_RETURN);
                     }
             } break;
 
