@@ -116,11 +116,6 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
 
                     switch (vk_code)
                     {
-                       // case VK_UP: {
-                        // input.buttons[BUTTON_UP].is_down = is_down;
-                        // input.buttons[BUTTON_UP].changed = true;
-                       // }
-
                         process_button(BUTTON_UP, VK_UP);
                         process_button(BUTTON_DOWN, VK_DOWN);
                         process_button(BUTTON_W, 'W');
@@ -142,7 +137,6 @@ int WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow)
         }
 
         // Simulate
-        // render_background();
         simulate_game(&input, delta_time);
 
         // Render
